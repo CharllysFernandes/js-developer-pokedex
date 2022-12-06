@@ -19,6 +19,23 @@ function convertPokemonToLi(pokemon) {
                 <img src="${pokemon.photo}"
                      alt="${pokemon.name}">
             </div>
+            <div id="pokeDetails_${pokemon.number}" style="display: none;" class="pokeDetails">
+                <span>
+                Height: ${pokemon.height} cm
+                </span>    
+                <span>
+                Weight: ${pokemon.weight} kg
+                </span>
+                <span>
+                Ability: ${pokemon.ability}
+                </span>
+                
+            </div>
+            <div class="align-self-center">
+            <button id="loadMoreDetails" type="button" class="loadDetails" onclick=loadPokeDetails(${pokemon.number})>
+                Load details...
+            </button>
+        </div>
         </li>
     `
 }
@@ -45,3 +62,16 @@ loadMoreButton.addEventListener('click', () => {
         loadPokemonItens(offset, limit)
     }
 })
+
+function loadPokeDetails(number) {
+    console.log(number)
+    var pokeDetails = document.getElementById(`pokeDetails_${number}`);
+    if (pokeDetails.style.display === "none") {
+      pokeDetails.style.display = "grid";
+    } else {
+      pokeDetails.style.display = "none";
+    }
+}
+
+function myFunction() {
+  }
